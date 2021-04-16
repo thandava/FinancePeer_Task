@@ -1,0 +1,42 @@
+{% extends "account/base.html" %}
+   {% block body_block %}
+   
+<script>
+  function fileValidation(){
+    var fileInput = document.getElementById('jfile');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.json)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Please upload file having extensions .json only.');
+        fileInput.value = '';
+        return false;
+    }
+}
+</script>
+      <form name = "form" enctype = "multipart/form-data" 
+         action = "/upload" method = "POST" >{% csrf_token %}
+         
+     
+         <div style = "max-width:470px;">
+            <center> 
+               <input type = "file" style = "margin-left:20%;" 
+                  placeholder = "Json File" name = "jfile" id="jfile" onchange="return fileValidation()" />
+            </center>
+         </div>
+			
+         <br>
+         
+         <div style = "max-width:470px;">
+            <center> 
+            
+               <button style = "border:0px;background-color:#4285F4; margin-top:8%; 
+                  height:35px; width:80%; margin-left:19%;" type = "submit" value = "Submit" >
+                  <strong>Submit</strong>
+               </button>
+               
+            </center>
+         </div>
+         
+      </form>
+      
+{% endblock %}
