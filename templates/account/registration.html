@@ -1,14 +1,16 @@
 {% extends "account/base.html" %}
 {% load static %}{% block body_block %}
-  <div class="container">
-    <div class="jumbotron">
-        <h4>Register Here</h4>
-        <h5>Just fill out the form.</h5><form enctype="multipart/form-data" method="POST">
-          {% csrf_token %}
-          {{ user_form.as_p }}
-          <input type="submit" name="" value="Register">
-        </form>
-        
-    </div>
+ <div class="col-xs-6" style=" margin-left: 100px; margin-right: 0px;" >
+<form method="post" >
+ {% csrf_token %}
+ {% for field in user_form %}
+  <div class="form-group" >
+    {{ field.label_tag }} {{ field }}
+  </div>
+{% endfor %}
+  <div class="form-group">
+  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+  </div>
+</form>
   </div>
 {% endblock %}

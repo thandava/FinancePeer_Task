@@ -56,7 +56,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                return render(request,'account/index.html')
+                return render(request,'account/index.html',{'username':username})
             else:
                 return HttpResponse("Your account was inactive.")
         else:
@@ -64,7 +64,7 @@ def user_login(request):
             print("They used username: {} and password: {}".format(username,password))
             return HttpResponse("Invalid login details given")
     else:
-        return render(request, 'account/login.html', {})
+        return render(request, 'account/login.html',{})
 		
 
 @login_required

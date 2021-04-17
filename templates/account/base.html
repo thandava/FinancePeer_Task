@@ -14,6 +14,7 @@
           {% if user.is_authenticated %}
             <li><a href="/logout">Logout</a></li>
 			<li><a href="/show">show</a></li>
+			<li><a>Welcome {{ user }}</a></li>
           {% else %}
 		    <li><a class="navbar-link" href="/register">Register</a></li> 
             <li><a class="navbar-link" href="/login">Login</a></li>
